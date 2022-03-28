@@ -28,38 +28,38 @@
         <div
           class="container d-flex justify-content-center align-items-center flex-wrap"
         >
-        <article class="evento card p-5 m-3">
-          <h2>Festival Coala - 05/03/2022</h2>
-          <h4>Miley Cyrus, Liniker, Smashing Pumpkins</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-            aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-            officiis neque natus eius harum alias quidem. Possimus nobis in
-            inventore tenetur asperiores.
-          </p>
-          <a href="#" class="btn btn-primary">reservar ingresso</a>
-        </article>
-        <article class="evento card p-5 m-3">
-          <h2>Indie Fest - 05/03/2022</h2>
-          <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-            aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-            officiis neque natus eius harum alias quidem. Possimus nobis in
-            inventore tenetur asperiores.
-          </p>
-          <a href="#" class="btn btn-primary">reservar ingresso</a>
-        </article>
-        <article class="evento card p-5 m-3">
-          <h2>Bourbon Jazz Festival - 05/03/2022</h2>
-          <h4>Esperanza Spalding, Zimbo Trio, Serial Funkers</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-            aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-            officiis.
-          </p>
-          <a href="#" class="btn btn-primary">reservar ingresso</a>
-        </article>
+          <article class="evento card p-5 m-3">
+            <h2>Festival Coala - 05/03/2022</h2>
+            <h4>Miley Cyrus, Liniker, Smashing Pumpkins</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
+              officiis neque natus eius harum alias quidem. Possimus nobis in
+              inventore tenetur asperiores.
+            </p>
+            <a href="#" class="btn btn-primary">reservar ingresso</a>
+          </article>
+          <article class="evento card p-5 m-3">
+            <h2>Indie Fest - 05/03/2022</h2>
+            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
+              officiis neque natus eius harum alias quidem. Possimus nobis in
+              inventore tenetur asperiores.
+            </p>
+            <a href="#" class="btn btn-primary">reservar ingresso</a>
+          </article>
+          <article class="evento card p-5 m-3">
+            <h2>Bourbon Jazz Festival - 05/03/2022</h2>
+            <h4>Esperanza Spalding, Zimbo Trio, Serial Funkers</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
+              officiis.
+            </p>
+            <a href="#" class="btn btn-primary">reservar ingresso</a>
+          </article>
           <article class="evento card p-5 m-3">
             <h2>nome do evento - 05/03/2022</h2>
             <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
@@ -196,19 +196,7 @@
           <div class="form-linha">
             <div class="mb-3">
               <label for="eventos">Evento</label>
-              <select name="eventos" id="eventos">
-                <option
-                  value="Arctic Monkeys, The Kooks, Hiatus Kaiyote"
-                  selected
-                >
-                  Arctic Monkeys, The Kooks, Hiatus Kaiyote
-                </option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-              </select>
+              <select name="eventos" id="eventos"></select>
             </div>
             <div class="mb-3">
               <label for="ingressos">Quantidade ingressos</label>
@@ -221,83 +209,14 @@
             </div>
           </div>
           <div class="div-finalizar-reserva">
-            <button class="finalizar-reserva">finalizar reserva</button>
+            <button class="finalizar-reserva" type="submit">
+              finalizar reserva
+            </button>
           </div>
         </form>
       </div>
     </div>
     <script src="js/script.js"></script>
+    <script src="js/eventos.js"></script>
   </body>
-</html>
-<div id="dv-modal" class="modal-cadastrar">
-  <div class="modal-content">
-    <button class="fechar-modal">&times;</button>
-    <h3>RESERVE SEU INGRESSO</h3>
-    <form class="form-modal">
-      <div class="form-linha">
-        <div class="mb-3">
-          <label for="nome">Nome Completo</label>
-          <input type="text" id="nome" aria-describedby="nome" />
-        </div>
-        <div class="mb-3">
-          <label for="email">Email</label>
-          <input type="text" id="email" aria-describedby="email" />
-        </div>
-      </div>
-      <div class="form-linha">
-        <div class="mb-3">
-          <label for="sexo">Sexo</label>
-          <select name="sexo" id="sexo">
-            <option value="masculino">Masculino</option>
-            <option value="feminino">Feminino</option>
-            <option value="prefiro não informar">
-              Prefiro não informar
-            </option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="CPF">CPF</label>
-          <input type="text" id="cpf" aria-describedby="cpf" />
-        </div>
-        <div class="mb-3">
-          <label for="data">Data de nascimento</label>
-          <input
-            type="date"
-            id="data-nascimento"
-            aria-describedby="data de nascimento"
-          />
-        </div>
-      </div>
-      <div class="form-linha">
-        <div class="mb-3">
-          <label for="eventos">Evento</label>
-          <select name="eventos" id="eventos">
-            <option value="Arctic Monkeys, The Kooks, Hiatus Kaiyote">
-              Arctic Monkeys, The Kooks, Hiatus Kaiyote
-            </option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="ingressos">Quantidade ingressos</label>
-          <select name="ingressos" id="ingressos">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </div>
-      </div>
-      <div class="div-finalizar-reserva">
-        <button class="finalizar-reserva">finalizar reserva</button>
-      </div>
-    </form>
-  </div>
-</div>
-<script src="js/script.js"></script>
-</body>
 </html>

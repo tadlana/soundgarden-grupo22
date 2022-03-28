@@ -1,37 +1,37 @@
-//LISTA DE EVENTOS EXISTENTES
+// LISTA DE EVENTOS EXISTENTES
 
-// const listaEventos = [
-//   {
-//     id: 1,
-//     nome: "Festival Coala",
-//     poster: "#",
-//     atracoes: ["Miley Cyrus", "Liniker", "Smashing Pumpkins"],
-//     descricao:
-//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique, dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus nobis in inventore tenetur asperiores.",
-//     data: "05/03/2022 20:00",
-//     locacao: 100,
-//   },
-//   {
-//     id: 2,
-//     nome: "Indie Fest",
-//     poster: "#",
-//     atracoes: ["Arctic Monkeys", "The Kooks", "Hiatus Kaiyote"],
-//     descricao:
-//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique, dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus nobis in inventore tenetur asperiores.",
-//     data: "05/03/2022 20:00",
-//     locacao: 100,
-//   },
-//   {
-//     id: 3,
-//     nome: "Bourbon Jazz Festival",
-//     poster: "#",
-//     atracoes: ["Esperanza Spalding", "Zimbo Trio", "Serial Funkers"],
-//     descricao:
-//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique, dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus nobis in inventore tenetur asperiores.",
-//     data: "05/03/2022 20:00",
-//     locacao: 100,
-//   },
-// ];
+const listaEventos = [
+  {
+    id: 1,
+    nome: "Festival Coala",
+    poster: "#",
+    atracoes: ["Miley Cyrus", "Liniker", "Smashing Pumpkins"],
+    descricao:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique, dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus nobis in inventore tenetur asperiores.",
+    data: "05/03/2022 20:00",
+    locacao: 100,
+  },
+  {
+    id: 2,
+    nome: "Indie Fest",
+    poster: "#",
+    atracoes: ["Arctic Monkeys", "The Kooks", "Hiatus Kaiyote"],
+    descricao:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique, dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus nobis in inventore tenetur asperiores.",
+    data: "05/03/2022 20:00",
+    locacao: 100,
+  },
+  {
+    id: 3,
+    nome: "Bourbon Jazz Festival",
+    poster: "#",
+    atracoes: ["Esperanza Spalding", "Zimbo Trio", "Serial Funkers"],
+    descricao:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique, dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus nobis in inventore tenetur asperiores.",
+    data: "05/03/2022 20:00",
+    locacao: 100,
+  },
+];
 
 const nomeInput = document.querySelector("#nome");
 const atracoesInput = document.querySelector("#atracoes");
@@ -77,5 +77,15 @@ form.onsubmit = async (evento) => {
   const conteudoResposta = await resposta.json();
   console.log(conteudoResposta);
 
+  listaEventos.push(novoEvento);
+  console.log(listaEventos);
   alert("Evento cadastrado");
 };
+
+//Adicionando os itens existentes na lista de eventos ao Modal
+listaEventos.forEach((evento) => {
+  const eventosSection = document.querySelector("#eventos");
+  eventosSection.innerHTML += `<option value = "${evento.atracoes}">
+${evento.atracoes.join(", ")}
+</option>`;
+});
