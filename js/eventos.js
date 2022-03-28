@@ -81,11 +81,3 @@ form.onsubmit = async (evento) => {
   console.log(listaEventos);
   alert("Evento cadastrado");
 };
-
-//Adicionando os itens existentes na lista de eventos ao Modal
-listaEventos.forEach((evento) => {
-  const eventosSection = document.querySelector("#eventos");
-  eventosSection.innerHTML += `<option value = "${evento.atracoes}">
-${evento.atracoes.join(", ")}
-</option>`;
-});
