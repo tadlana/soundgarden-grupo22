@@ -55,7 +55,7 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
   }
 
     
-    const resposta = await fetch(`${BASE_URL}/events/` + buscaid(), opcoes)
+    const resposta = await fetch(${BASE_URL}/events, opcoes)
     const conteudoResposta = await resposta.json()
     return conteudoResposta
 }
