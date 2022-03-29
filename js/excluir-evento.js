@@ -48,19 +48,15 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
     formExcluir.innerHTML = output;
   });
 
-//função de deletar evento - AINDA NÃO ESTÁ PEGANDO
+formExcluir.onsubmit = async (evento) => {
+  evento.preventDefault();
+  const opcoes = {
+    method: "DELETE",
+    redirect: "follow",
+  };
 
-// formExcluir.onsubmit = async (evento) => {
-//   evento.preventDefault;
-//   await fetch(`${BASE_URL}/events/${nomeParam}`, {
-//     method: "DELETE",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   alert("Evento excluído com sucesso");
+  const resposta = await fetch(`${BASE_URL}/events/${nomeParam}`, opcoes);
 
-//   setTimeout(() => {
-//     window.location.href = "admin.html";
-//   }, 2000);
-// };
+  alert("Evento excluído com sucesso");
+  window.location.replace("./admin.html");
+};

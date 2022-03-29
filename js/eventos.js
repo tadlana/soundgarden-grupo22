@@ -42,5 +42,5 @@ form.onsubmit = async (evento) => {
   const conteudoResposta = await resposta.json();
   console.log(conteudoResposta);
 
-  alert("Evento cadastrado");
+  alert("Evento cadastrado com sucesso");
 };
