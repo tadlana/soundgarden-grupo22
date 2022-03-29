@@ -19,4 +19,8 @@ fetch(`${BASE_URL}/events`)
     </article>`;
     });
     listaEventos.innerHTML = outputEventos;
+  })
+  .catch((error) => {
+    console.log(error);
+    alert("Não foi possível carregar dados da página.");
   });

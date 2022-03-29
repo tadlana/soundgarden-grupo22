@@ -31,4 +31,8 @@ fetch(`${BASE_URL}/events`)
       </tr>`;
     });
     listaAdmin.innerHTML = outputAdmin;
+  })
+  .catch((error) => {
+    console.log(error);
+    alert("Não foi possível carregar dados da página.");
   });

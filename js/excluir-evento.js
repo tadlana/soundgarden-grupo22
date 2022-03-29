@@ -46,17 +46,26 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
     <button type="submit" class="btn btn-danger">excluir pra sempre</button>`;
 
     formExcluir.innerHTML = output;
+  })
+  .catch((error) => {
+    console.log(error);
+    alert("Não foi possível carregar dados da página.");
   });
 
 formExcluir.onsubmit = async (evento) => {
   evento.preventDefault();
-  const opcoes = {
-    method: "DELETE",
-    redirect: "follow",
-  };
+  try {
+    const opcoes = {
+      method: "DELETE",
+      redirect: "follow",
+    };
 
-  const resposta = await fetch(`${BASE_URL}/events/${nomeParam}`, opcoes);
+    const resposta = await fetch(`${BASE_URL}/events/${nomeParam}`, opcoes);
 
-  alert("Evento excluído com sucesso");
-  window.location.replace("./admin.html");
+    alert("Evento excluído com sucesso");
+    window.location.replace("./admin.html");
+  } catch (error) {
+    console.log(error);
+    alert("Não foi possível deletar evento.");
+  }
 };
