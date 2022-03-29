@@ -1,9 +1,7 @@
 //lista de eventos admin.html
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const listaEventos = document.querySelector(".table-body");
-const eventosSection = document.querySelector("#eventos");
 let output = "";
-let output2 = "";
 
 fetch(`${BASE_URL}/events`)
   .then((value) => {
@@ -18,11 +16,18 @@ fetch(`${BASE_URL}/events`)
         <td>${evento.name}</td>
         <td>${evento.attractions}</td>
         <td class ="botoes-admin">
-          <a href="reservas.html" class="btn btn-dark">ver reservas</a>
-          <a href="editar.html" class="btn btn-secondary">editar</a>
-          <a href="editar.html" class="btn btn-danger">excluir</a>
+          <a href="reservas.html" class="btn btn-dark" id="${
+            evento._id
+          }"> ver reservas</a>
+          <a href="editar-evento.html?_id=${
+            evento._id
+          }" class="btn btn-secondary" id="${evento._id}">editar</a>
+          <a href="excluir-evento.html?_id=${
+            evento._id
+          }" class="btn btn-danger" id="${evento._id}">excluir</a>
         </td>
       </tr>`;
     });
     listaEventos.innerHTML = output;
+    console.log(value);
   });
