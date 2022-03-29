@@ -1,7 +1,9 @@
 //lista de eventos admin.html
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
-const listaEventos = document.querySelector(".table-body");
-let output = "";
+const listaAdmin = document.querySelector(".table-body");
+const listaEventos = document.querySelector("#todos-eventos");
+let outputAdmin = "";
+let outputEventos = "";
 
 fetch(`${BASE_URL}/events`)
   .then((value) => {
@@ -10,24 +12,23 @@ fetch(`${BASE_URL}/events`)
   .then((value) => {
     let i = 1;
     value.forEach((evento) => {
-      output += `<tr>
+      outputAdmin += `<tr>
         <th scope="row">${i++}</th>
         <td>${evento.scheduled}</td>
         <td>${evento.name}</td>
         <td>${evento.attractions}</td>
         <td class ="botoes-admin">
-          <a href="reservas.html" class="btn btn-dark" id="${
+          <a href="reservas.html?_id=${
             evento._id
-          }"> ver reservas</a>
+          }" class="btn btn-dark"> ver reservas</a>
           <a href="editar-evento.html?_id=${
             evento._id
-          }" class="btn btn-secondary" id="${evento._id}">editar</a>
+          }" class="btn btn-secondary" >editar</a>
           <a href="excluir-evento.html?_id=${
             evento._id
-          }" class="btn btn-danger" id="${evento._id}">excluir</a>
+          }" class="btn btn-danger">excluir</a>
         </td>
       </tr>`;
     });
-    listaEventos.innerHTML = output;
-    console.log(value);
+    listaAdmin.innerHTML = outputAdmin;
   });

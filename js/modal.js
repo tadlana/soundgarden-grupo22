@@ -1,6 +1,5 @@
 //MODAL
-
-const botaoAbrirModal = document.querySelectorAll(".btn-primary");
+const botaoAbrirModal = document.querySelectorAll("#botao-reservar");
 const modalCadastrar = document.querySelector(".modal-cadastrar");
 
 botaoAbrirModal.forEach((botao) => {
@@ -22,19 +21,19 @@ document.addEventListener("keydown", (e) => {
 });
 
 //adicionando eventos da api ao select do modal
-const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
-const eventosSection = document.querySelector("#eventos");
-let output2 = "";
+// const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
+// const eventosSection = document.querySelector("#eventos");
+// let output2 = "";
 
-fetch(`${BASE_URL}/events`)
-  .then((value) => {
-    return value.json();
-  })
-  .then((value) => {
-    value.forEach((evento) => {
-      output2 += `<option value = "${evento.attractions}">
-      ${evento.attractions}
-      </option>`;
-    });
-    eventosSection.innerHTML += output2;
-  });
+// fetch(`${BASE_URL}/events`)
+//   .then((value) => {
+//     return value.json();
+//   })
+//   .then((value) => {
+//     value.forEach((evento) => {
+//       output2 += `<option value = "${evento.attractions}">
+//       ${evento.attractions}
+//       </option>`;
+//     });
+//     eventosSection.innerHTML += output2;
+//   });

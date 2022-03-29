@@ -1,3 +1,9 @@
+const nomeInput = document.querySelector("#nome");
+const linkImgInput = document.querySelector("#banner");
+const atracoesInput = document.querySelector("#atracoes");
+const descricaoInput = document.querySelector("#descricao");
+const dataInput = document.querySelector("#data");
+const lotacaoInput = document.querySelector("#lotacao");
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const formEditar = document.querySelector("form");
 let output = "";
@@ -16,7 +22,7 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
     <div class="mb-3">
       <label for="banner" class="form-label">Banner</label>
       <input type="text" class="form-control" id="banner" aria-describedby="banner"
-          value="${value.post}">
+          value="${value.poster}">
       <small>adicione o link da imagem</small>
     </div>
     <div class="mb-3">
@@ -45,57 +51,81 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
     formEditar.innerHTML = output;
   });
 
-  
-    const editarEvento = async (evento) => {
-    const opcoes  =  {
-      method: "PUT",
-      body: JSON.stringify(evento),
-      headers: {
-          "Content-Type": "application/json"},
-  }
+const editarEvento = async (evento) => {
+  const opcoes = {
+    method: "PUT",
+    body: JSON.stringify(evento),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
 
-    
-    const resposta = await fetch(${BASE_URL}/events, opcoes)
-    const conteudoResposta = await resposta.json()
-    return conteudoResposta
-}
+  const resposta = await fetch(`${BASE_URL}/events`, opcoes);
+  const conteudoResposta = await resposta.json();
+  return conteudoResposta;
+};
 
-     formEditar.onsubmit = async (evento) => {
-      try {
-        evento.preventDefault()
-    
-      const novoEvento = {
-        name: nomeInput.value,
-        poster: linkImgInput.value,
-        attractions: atracoesInput.value.split(","),
-        description: descricaoInput.value,
-        scheduled: new Date(dataInput.value).toISOString(),
-        number_tickets: lotacaoInput.value,
-      };
-        
+formEditar.onsubmit = async (evento) => {
+  try {
+    evento.preventDefault();
+
+    const novoEvento = {
+      name: nomeInput.value,
+      poster: linkImgInput.value,
+      attractions: atracoesInput.value.split(","),
+      description: descricaoInput.value,
+      scheduled: new Date(dataInput.value).toISOString(),
+      number_tickets: lotacaoInput.value,
+    };
+
     const conteudoResposta = await editarEvento(novoEvento);
     console.log(conteudoResposta);
 
-    
-    alert('Evento atualizado com sucesso!')
-    window.location.pathname = "admin.html"
+    alert("Evento atualizado com sucesso!");
+    window.location.pathname = "admin.html";
   } catch {
-    console.log('error');
-    alert("Erro ao atualizar evento!")
+    console.log("error");
+    alert("Erro ao atualizar evento!");
   }
-  }
+};
 
-  const eventoAtualizado = async () => { 
-    const conteudoResposta = await listaEventos();
-    
-    nomeInput.value = conteudoResposta.name,
-    linkImgInput.value = conteudoResposta.poster,
-    atracoesInput.value = conteudoResposta.attractions,
-    descricaoInput.value = conteudoResposta.description,
-    dataInput.value = scheduled.toLocaleString(),
-    lotacaoInput.value = conteudoResposta.number_tickets,
-    
-  
-  eventoAtualizado()
+const eventoAtualizado = async () => {
+  const conteudoResposta = await listaEventos();
 
-  }
+  (nomeInput.value = conteudoResposta.name),
+    (linkImgInput.value = conteudoResposta.poster),
+    (atracoesInput.value = conteudoResposta.attractions),
+    (descricaoInput.value = conteudoResposta.description),
+    (dataInput.value = scheduled.toLocaleString()),
+    (lotacaoInput.value = conteudoResposta.number_tickets),
+    eventoAtualizado();
+};
+
+// formEditar.onsubmit = async (evento) => {
+//   evento.preventDefault();
+
+//   const novoEvento = {
+//     name: nomeInput.value,
+//     poster: linkImgInput.value,
+//     attractions: atracoesInput.value.split(","),
+//     description: descricaoInput.value,
+//     scheduled: new Date(dataInput.value).toISOString(),
+//     number_tickets: lotacaoInput.value,
+//   };
+
+//   const opcoes = {
+//     method: "PUT",
+//     body: JSON.stringify(novoEvento),
+//     headers: {
+//       "content-type": "application/json",
+//     },
+//     redirect: "follow",
+//   };
+
+//   //montar o fetch
+//   const resposta = await fetch(`${BASE_URL}/events/${nomeParam}`, opcoes);
+//   const conteudoResposta = await resposta.json();
+//   console.log(conteudoResposta);
+
+//   alert("Evento atualizado com sucesso");
+// };

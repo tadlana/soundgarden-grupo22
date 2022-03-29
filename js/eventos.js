@@ -1,46 +1,22 @@
-const nomeInput = document.querySelector("#nome");
-const atracoesInput = document.querySelector("#atracoes");
-const descricaoInput = document.querySelector("#descricao");
-const dataInput = document.querySelector("#data");
-const lotacaoInput = document.querySelector("#lotacao");
-const linkImgInput = document.querySelector("#poster");
-const form = document.querySelector("form");
-
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
+const listaEventos = document.querySelector("#todos-eventos");
+let outputEventos = "";
 
-form.onsubmit = async (evento) => {
-  evento.preventDefault();
-
-  const novoEvento = {
-    name: nomeInput.value,
-    poster: linkImgInput.value,
-    attractions: atracoesInput.value.split(","),
-    description: descricaoInput.value,
-    scheduled: new Date(dataInput.value).toISOString(),
-    number_tickets: lotacaoInput.value,
-  };
-
-  //TENTANDO CORRIGIR BUG DATA/HORA
-
-  // const dataHora = inDate.value;
-
-  // const [dia, mes, ano] = dataHora.split("/");
-
-  // let dataConvertida = [mes, dia, ano].join("/");
-
-  const opcoes = {
-    method: "POST",
-    body: JSON.stringify(novoEvento),
-    headers: {
-      "content-type": "application/json",
-    },
-    redirect: "follow",
-  };
-
-  //montar o fetch
-  const resposta = await fetch(`${BASE_URL}/events`, opcoes);
-  const conteudoResposta = await resposta.json();
-  console.log(conteudoResposta);
-
-  alert("Evento cadastrado com sucesso");
-};
+fetch(`${BASE_URL}/events`)
+  .then((value) => {
+    return value.json();
+  })
+  .then((value) => {
+    let i = 1;
+    value.forEach((evento) => {
+      outputEventos += `<article class="evento card p-5 m-3">
+      <h2>${evento.name} - ${evento.scheduled}</h2>
+      <h4>${evento.attractions}</h4>
+      <p>
+      ${evento.description}
+      </p>
+      <a href="#" id="botao-reservar" class="btn btn-primary">reservar ingresso</a>
+    </article>`;
+    });
+    listaEventos.innerHTML = outputEventos;
+  });

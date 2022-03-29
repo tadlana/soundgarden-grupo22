@@ -19,7 +19,7 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
     <div class="mb-3">
       <label for="banner" class="form-label">Banner</label>
       <input type="text" class="form-control" id="banner" aria-describedby="banner"
-          value="${value.post}" disabled>
+          value="${value.poster}" disabled>
       <small>adicione o link da imagem</small>
     </div>
     <div class="mb-3">
