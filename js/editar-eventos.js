@@ -67,7 +67,7 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
     const resposta = await conteudoResposta.json()
     const {name, poster, description, scheduled, number_tickets} = resposta
     const newDate = new Date(scheduled)
-    const dataFormatada = ${newDate.getFullYear()}-${formatNumber(newDate.getMonth())}-${newDate.getDate()}T${formatNumber(newDate.getHours())}:${formatNumber(newDate.getMinutes())}
+    // const dataFormatada = ${newDate.getFullYear()}-${formatNumber(newDate.getMonth())}-${newDate.getDate()}T${formatNumber(newDate.getHours())}:${formatNumber(newDate.getMinutes())}
 
     console.log(newDate)
     nomeInput.value = name
@@ -127,4 +127,4 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
     (lotacaoInput.value = conteudoResposta.number_tickets),
     eventoAtualizado();
 }
-
+  }
