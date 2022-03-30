@@ -17,7 +17,8 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
   })
   .then((value) => {
     output = `<label for="nome" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="nome" aria-describedby="nome" value="${value.name}">
+      <input type="text" class="form-control" id="nome" aria-describedby="nome" value="${value.name}"
+          >
     </div>
     <div class="mb-3">
       <label for="banner" class="form-label">Banner</label>
@@ -33,7 +34,7 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
     </div>
     <div class="mb-3">
       <label for="descricao" class="form-label">Descrição</label>
-      <textarea name="descricao" id="descricao" class="form-control" rows="5" >${value.description}
+      <textarea name="descricao" id="descricao" class="form-control" rows="5">${value.description}
       </textarea>
     </div>
     <div class="mb-3">
@@ -46,86 +47,84 @@ fetch(`${BASE_URL}/events/${nomeParam}`)
       <input type="number" class="form-control" id="lotacao" aria-describedby="lotacao"
           value="${value.number_tickets}">
     </div>
-    <button type="submit" class="btn btn-danger">salvar</button>`;
+    <button type="submit" class="btn btn-danger">Enviar</button>`;
 
     formEditar.innerHTML = output;
+  })
+  .catch((error) => {
+    console.log(error);
+    alert("Não foi possível carregar dados da página.");
   });
 
-const editarEvento = async (evento) => {
-  const opcoes = {
-    method: "PUT",
-    body: JSON.stringify(evento),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+  const conteudoResposta = async () => {
+    const opcoes = {
+        method: "GET",
+        redirect: "follow"
+        };
+    
 
-  const resposta = await fetch(`${BASE_URL}/events`, opcoes);
-  const conteudoResposta = await resposta.json();
-  return conteudoResposta;
-};
+    const conteudoResposta = await fetch(`${BASE_URL}/events/${nomeParam}`, opcoes)
+    const resposta = await conteudoResposta.json()
+    const {name, poster, description, scheduled, number_tickets} = resposta
+    const newDate = new Date(scheduled)
+    const dataFormatada = ${newDate.getFullYear()}-${formatNumber(newDate.getMonth())}-${newDate.getDate()}T${formatNumber(newDate.getHours())}:${formatNumber(newDate.getMinutes())}
 
-formEditar.onsubmit = async (evento) => {
-  try {
-    evento.preventDefault();
-
-    const novoEvento = {
-      name: nomeInput.value,
-      poster: linkImgInput.value,
-      attractions: atracoesInput.value.split(","),
-      description: descricaoInput.value,
-      scheduled: new Date(dataInput.value).toISOString(),
-      number_tickets: lotacaoInput.value,
-    };
-
-    const conteudoResposta = await editarEvento(novoEvento);
-    console.log(conteudoResposta);
-
-    alert("Evento atualizado com sucesso!");
-    window.location.pathname = "admin.html";
-  } catch {
-    console.log("error");
-    alert("Erro ao atualizar evento!");
+    console.log(newDate)
+    nomeInput.value = name
+    linkImgInput.value = poster
+    atracoesInput.value = attractions
+    descricaoInput.value = description
+    dataInput.value = scheduled
+    lotacaoInput.value = number_tickets
+    const formatNumber = (numero) => {
+      if ( numero < 10 ) {
+          return "0"+numero
+      }
+      return numero
   }
-};
+  
 
-const eventoAtualizado = async () => {
-  const conteudoResposta = await listaEventos();
 
-  (nomeInput.value = conteudoResposta.name),
+  formEditar.onsubmit = async event => {
+    event.preventDefault();
+
+  try {
+      const editarEvento = {
+          name: nomeEditar.value,
+          poster: bannerEditar.value,
+          attractions: atracoesEditar.value.split(', '),
+          description: descricaoEditar.value,
+          scheduled: dataEditar.value,
+          number_tickets: ticketsEditar.value,
+      };      
+
+      const opcoes = {
+          method: "PUT",
+          body: JSON.stringify(editarEvento),
+          headers: {
+              "Content-Type": "application/json",
+          },
+      };
+
+      const resposta = await fetch(`${BASE_URL}/events/${nomeParam}` , opcoes)
+      const conteudoResposta = await resposta.json()
+      alert("Evento atualizado com sucesso!")
+
+  } catch (error) {
+      console.log(error);
+      alert('Deu ruim');
+  }
+}
+
+  const eventoAtualizado = async () => {
+  const conteudoResposta = await novoEvento();
+
+    (nomeInput.value = conteudoResposta.name),
     (linkImgInput.value = conteudoResposta.poster),
     (atracoesInput.value = conteudoResposta.attractions),
     (descricaoInput.value = conteudoResposta.description),
     (dataInput.value = scheduled.toLocaleString()),
     (lotacaoInput.value = conteudoResposta.number_tickets),
     eventoAtualizado();
-};
+}
 
-// formEditar.onsubmit = async (evento) => {
-//   evento.preventDefault();
-
-//   const novoEvento = {
-//     name: nomeInput.value,
-//     poster: linkImgInput.value,
-//     attractions: atracoesInput.value.split(","),
-//     description: descricaoInput.value,
-//     scheduled: new Date(dataInput.value).toISOString(),
-//     number_tickets: lotacaoInput.value,
-//   };
-
-//   const opcoes = {
-//     method: "PUT",
-//     body: JSON.stringify(novoEvento),
-//     headers: {
-//       "content-type": "application/json",
-//     },
-//     redirect: "follow",
-//   };
-
-//   //montar o fetch
-//   const resposta = await fetch(`${BASE_URL}/events/${nomeParam}`, opcoes);
-//   const conteudoResposta = await resposta.json();
-//   console.log(conteudoResposta);
-
-//   alert("Evento atualizado com sucesso");
-// };
