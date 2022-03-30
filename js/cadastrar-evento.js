@@ -37,7 +37,6 @@ form.onsubmit = async (evento) => {
       redirect: "follow",
     };
 
-    //montar o fetch
     const resposta = await fetch(`${BASE_URL}/events`, opcoes);
     const conteudoResposta = await resposta.json();
     console.log(conteudoResposta);
