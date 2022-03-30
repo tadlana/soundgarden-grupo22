@@ -31,7 +31,10 @@
         <div class="container text-center">
           <h2>Próximos eventos</h2>
         </div>
-        <div class="container d-flex justify-content-center align-items-center">
+        <div
+          id="todos-eventos"
+          class="container d-flex justify-content-center align-items-center"
+        >
           <article class="evento card p-5 m-3">
             <h2>Festival Coala - 05/03/2022</h2>
             <h4>Miley Cyrus, Liniker, Smashing Pumpkins</h4>
@@ -176,10 +179,7 @@
             </div>
           </div>
           <div class="form-linha">
-            <div class="mb-3">
-              <label for="eventos">Evento</label>
-              <select name="eventos" id="eventos"></select>
-            </div>
+            <div class="mb-3" id="div-eventos"></div>
             <div class="mb-3">
               <label for="ingressos">Quantidade ingressos</label>
               <select name="ingressos" id="ingressos">
@@ -199,5 +199,6 @@
       </div>
     </div>
     <script src="js/modal.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

@@ -7,18 +7,19 @@ fetch(`${BASE_URL}/events`)
     return value.json();
   })
   .then((value) => {
-    value.forEach((evento) => {
+    for (let i = 0; i < 3; i++) {
       outputEventos += `<article class="evento card p-5 m-3 card-evento">
-      <h2>${evento.name} - ${evento.scheduled}</h2>
-      <h4>${evento.attractions}</h4>
+      <h2>${value[i].name} - ${value[i].scheduled}</h2>
+      <h4>${value[i].attractions}</h4>
       <p>
-      ${evento.description}
+      ${value[i].description}
       </p>
-      <a href="#" id="botao-reservar" class="btn btn-primary" event-name="${evento.name}">reservar ingresso</a>
+      <a href="#" id="botao-reservar" class="btn btn-primary" event-name="${value[i].name}">reservar ingresso</a>
     </article>`;
-    });
-    listaEventos.innerHTML = outputEventos;
-    click();
+
+      listaEventos.innerHTML = outputEventos;
+      click();
+    }
   })
   .catch((error) => {
     console.log(error);

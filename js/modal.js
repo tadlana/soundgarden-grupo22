@@ -1,12 +1,25 @@
 //MODAL
-const botaoAbrirModal = document.querySelectorAll("#botao-reservar");
+let botaoAbrirModal = document.querySelectorAll("#botao-reservar");
 const modalCadastrar = document.querySelector(".modal-cadastrar");
+const eventosDiv = document.querySelector("#div-eventos");
 
-botaoAbrirModal.forEach((botao) => {
-  botao.addEventListener("mousedown", (e) => {
-    modalCadastrar.style.display = "block";
+function click() {
+  botaoAbrirModal = document.querySelectorAll("#botao-reservar");
+  botaoAbrirModal.forEach((botao) => {
+    botao.addEventListener("mousedown", (e) => {
+      modalCadastrar.style.display = "block";
+      let output = `<label for="eventos">Evento</label>
+      <input
+        type="text"
+        id="eventos"
+        aria-describedby="eventos"
+        value= "${e.target.getAttribute("event-name")}"
+        disabled
+      />`;
+      eventosDiv.innerHTML = output;
+    });
   });
-});
+}
 
 const botaoFecharModal = document.querySelector(".fechar-modal");
 
@@ -19,21 +32,3 @@ document.addEventListener("keydown", (e) => {
     modalCadastrar.style.display = "none";
   }
 });
-
-//adicionando eventos da api ao select do modal
-// const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
-// const eventosSection = document.querySelector("#eventos");
-// let output2 = "";
-
-// fetch(`${BASE_URL}/events`)
-//   .then((value) => {
-//     return value.json();
-//   })
-//   .then((value) => {
-//     value.forEach((evento) => {
-//       output2 += `<option value = "${evento.attractions}">
-//       ${evento.attractions}
-//       </option>`;
-//     });
-//     eventosSection.innerHTML += output2;
-//   });
