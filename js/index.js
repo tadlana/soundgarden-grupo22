@@ -14,7 +14,7 @@ fetch(`${BASE_URL}/events`)
       <p>
       ${value[i].description}
       </p>
-      <a href="#" id="botao-reservar" class="btn btn-primary" event-name="${value[i].name}">reservar ingresso</a>
+      <a href="#" id="botao-reservar" class="btn btn-primary" event-name="${value[i].name}" event-id="${value[i]._id}">reservar ingresso</a>
     </article>`;
 
       listaEventos.innerHTML = outputEventos;

@@ -2,6 +2,7 @@
 let botaoAbrirModal = document.querySelectorAll("#botao-reservar");
 const modalCadastrar = document.querySelector(".modal-cadastrar");
 const eventosDiv = document.querySelector("#div-eventos");
+const botaoDiv = document.querySelector("#div-finalizar-reserva");
 
 function click() {
   botaoAbrirModal = document.querySelectorAll("#botao-reservar");
@@ -16,7 +17,15 @@ function click() {
         value= "${e.target.getAttribute("event-name")}"
         disabled
       />`;
+
+      let output2 = `<button class="finalizar-reserva" type="submit" event-id ="${e.target.getAttribute(
+        "event-id"
+      )}">
+      finalizar reserva
+    </button>`;
+
       eventosDiv.innerHTML = output;
+      botaoDiv.innerHTML = output2;
     });
   });
 }
