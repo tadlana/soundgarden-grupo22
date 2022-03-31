@@ -2,6 +2,20 @@
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const listaAdmin = document.querySelector(".table-body");
 let outputAdmin = "";
+const carregando = document.querySelector(".carregando");
+
+const formatarData = (data) => {
+  const data2 = data.split("");
+
+  const dataFormatada =
+    data2.slice(8, 10).join("") +
+    "/" +
+    data2.slice(5, 7).join("") +
+    "/" +
+    data2.slice(0, 4).join("");
+
+  return dataFormatada;
+};
 
 fetch(`${BASE_URL}/events`)
   .then((value) => {
@@ -12,7 +26,7 @@ fetch(`${BASE_URL}/events`)
     value.forEach((evento) => {
       outputAdmin += `<tr>
         <th scope="row">${i++}</th>
-        <td>${evento.scheduled}</td>
+        <td>${formatarData(evento.scheduled)}</td>
         <td>${evento.name}</td>
         <td>${evento.attractions}</td>
         <td class ="botoes-admin">
@@ -29,6 +43,7 @@ fetch(`${BASE_URL}/events`)
       </tr>`;
     });
     listaAdmin.innerHTML = outputAdmin;
+    loading.style.display = "none";
   })
   .catch((error) => {
     console.log(error);

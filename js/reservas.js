@@ -4,6 +4,7 @@ const listaReservas = document.querySelector(".table-body");
 let outputReservas = "";
 const urlParams = new URLSearchParams(window.location.search);
 const nomeParam = urlParams.get("_id");
+const carregando = document.querySelector(".carregando");
 
 fetch(`${BASE_URL}/bookings/event/${nomeParam}`)
   .then((value) => {
@@ -26,6 +27,7 @@ fetch(`${BASE_URL}/bookings/event/${nomeParam}`)
       </tr>`;
     });
     listaReservas.innerHTML = outputReservas;
+    loading.style.display = "none";
   })
   .catch((error) => {
     console.log(error);

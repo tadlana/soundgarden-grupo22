@@ -2,6 +2,19 @@ const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const listaEventos = document.querySelector("#todos-eventos");
 let outputEventos = "";
 
+const formatarData = (data) => {
+  const data2 = data.split("");
+
+  const dataFormatada =
+    data2.slice(8, 10).join("") +
+    "/" +
+    data2.slice(5, 7).join("") +
+    "/" +
+    data2.slice(0, 4).join("");
+
+  return dataFormatada;
+};
+
 fetch(`${BASE_URL}/events`)
   .then((value) => {
     return value.json();
@@ -9,12 +22,14 @@ fetch(`${BASE_URL}/events`)
   .then((value) => {
     for (let i = 0; i < 3; i++) {
       outputEventos += `<article class="evento card p-5 m-3 card-evento">
-      <h2>${value[i].name} - ${value[i].scheduled}</h2>
+      <h2>${value[i].name} - ${formatarData(value[i].scheduled)}</h2>
       <h4>${value[i].attractions}</h4>
       <p>
       ${value[i].description}
       </p>
-      <a href="#?id=${value[i]._id}" id="botao-reservar" class="btn btn-primary" event-name="${value[i].name}" event-id="${value[i]._id}">reservar ingresso</a>
+      <a href="#" id="botao-reservar" class="btn btn-primary" event-name="${
+        value[i].name
+      }" event-id="${value[i]._id}">reservar ingresso</a>
     </article>`;
       listaEventos.innerHTML = outputEventos;
       click();
