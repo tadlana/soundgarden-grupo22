@@ -1,14 +1,13 @@
 const nomeInput = document.querySelector("#nome");
 const emailInput = document.querySelector("#email");
 const ingressosInput = document.querySelector("#ingressos");
-const botaoReservar = document.querySelector(".finalizar-reserva");
-
+const formModal = document.querySelector("form");
 const BASE_URL2 = "https://xp41-soundgarden-api.herokuapp.com";
 
 function click2() {
-  const botaoReservar = document.querySelectorAll(".finalizar-reserva");
-  botaoReservar.forEach((botao) => {
-    botao.addEventListener("click", async (evento) => {
+  const formModal = document.querySelectorAll("form");
+  formModal.forEach((form) => {
+    form.onsubmit = async (evento) => {
       evento.preventDefault();
       try {
         const novoEvento = {
@@ -44,6 +43,6 @@ function click2() {
       } catch (error) {
         console.log(error);
       }
-    });
+    };
   });
 }

@@ -29,7 +29,9 @@ fetch(`${BASE_URL}/events`)
       </p>
       <a href="#" id="botao-reservar" class="btn btn-primary" event-name="${
         value[i].name
-      }" event-id="${value[i]._id}">reservar ingresso</a>
+      }" event-id="${value[i]._id}" event-tickets="${
+        value[i].number_tickets
+      }">reservar ingresso</a>
     </article>`;
       listaEventos.innerHTML = outputEventos;
       click();
@@ -45,6 +47,8 @@ const modalCadastrar = document.querySelector(".modal-cadastrar");
 const eventosDiv = document.querySelector("#div-eventos");
 const botaoDiv = document.querySelector("#div-finalizar-reserva");
 const form = document.querySelector("form");
+const ingressos = document.querySelector("#ingressos");
+const ingressosDisponiveis = document.querySelector("#ingressos-disponiveis");
 
 function click() {
   botaoAbrirModal = document.querySelectorAll("#botao-reservar");
@@ -60,14 +64,12 @@ function click() {
         disabled
       />`;
 
-      let output2 = `<button class="finalizar-reserva" type="submit" event-id ="${e.target.getAttribute(
-        "event-id"
-      )}">
-      finalizar reserva
-    </button>`;
-
       eventosDiv.innerHTML = output;
-      botaoDiv.innerHTML = output2;
+      form.setAttribute("event-id", e.target.getAttribute("event-id"));
+      ingressosDisponiveis.innerHTML = `Ingressos disponíveis: ${e.target.getAttribute(
+        "event-tickets"
+      )}`;
+      ingressos.setAttribute("max", e.target.getAttribute("event-tickets"));
       click2();
     });
   });
@@ -77,10 +79,16 @@ const botaoFecharModal = document.querySelector(".fechar-modal");
 
 botaoFecharModal.addEventListener("mousedown", (e) => {
   modalCadastrar.style.display = "none";
+  nomeInput.value = "";
+  emailInput.value = "";
+  ingressosInput.value = "";
 });
 
 document.addEventListener("keydown", (e) => {
   if (e.key == "Escape") {
     modalCadastrar.style.display = "none";
+    nomeInput.value = "";
+    emailInput.value = "";
+    ingressosInput.value = "";
   }
 });

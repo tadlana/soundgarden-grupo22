@@ -16,7 +16,7 @@ form.onsubmit = async (evento) => {
       poster: linkImgInput.value,
       attractions: atracoesInput.value.split(","),
       description: descricaoInput.value,
-      scheduled: new Date(dataInput.value).toISOString(),
+      scheduled: dataInput.value,
       number_tickets: lotacaoInput.value,
     };
 

@@ -20,17 +20,12 @@ const resposta = async () => {
   const resposta = await fetch(`${BASE_URL}/events/${nomeParam}`);
   const conteudoResposta = await resposta.json();
   const newDate = new Date(conteudoResposta.scheduled);
-  const dataFormatada = `${newDate.getFullYear()}-${formatNumber(
-    newDate.getMonth()
-  )}-${newDate.getDate()}T${formatNumber(newDate.getHours())}:${formatNumber(
-    newDate.getMinutes()
-  )}`;
 
   inputNome.value = conteudoResposta.name;
   inputBanner.value = conteudoResposta.poster;
   inputAtracoes.value = conteudoResposta.attractions;
   inputDescricao.value = conteudoResposta.description;
-  inputData.value = dataFormatada;
+  inputData.value = conteudoResposta.scheduled.split("").slice(0, 16).join("");
   inputLotacao.value = conteudoResposta.number_tickets;
 };
 
