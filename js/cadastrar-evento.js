@@ -20,14 +20,6 @@ form.onsubmit = async (evento) => {
       number_tickets: lotacaoInput.value,
     };
 
-    //TENTANDO CORRIGIR BUG DATA/HORA
-
-    // const dataHora = inDate.value;
-
-    // const [dia, mes, ano] = dataHora.split("/");
-
-    // let dataConvertida = [mes, dia, ano].join("/");
-
     const opcoes = {
       method: "POST",
       body: JSON.stringify(novoEvento),
@@ -41,10 +33,14 @@ form.onsubmit = async (evento) => {
     const conteudoResposta = await resposta.json();
     console.log(conteudoResposta);
 
-    alert("Evento cadastrado com sucesso");
-    window.location.replace("./admin.html");
+    if (resposta.status != 400) {
+      alert("Evento cadastrado com sucesso");
+      window.location.replace("./admin.html");
+    }
+    if (resposta.status == 400) {
+      alert("Cadastro negado. Preencha os campos corretamente.");
+    }
   } catch (error) {
     console.log(error);
-    alert("Cadastro negado. Preencha os campos corretamente.");
   }
 };

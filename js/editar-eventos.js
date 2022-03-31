@@ -41,30 +41,38 @@ resposta().catch((error) => {
 
 form.onsubmit = async (evento) => {
   evento.preventDefault();
+  try {
+    const novoEvento = {
+      name: inputNome.value,
+      poster: inputBanner.value,
+      attractions: [inputAtracoes.value.split(",")],
+      description: inputDescricao.value,
+      scheduled: inputData.value,
+      number_tickets: inputLotacao.value,
+    };
 
-  const novoEvento = {
-    name: inputNome.value,
-    poster: inputBanner.value,
-    attractions: [inputAtracoes.value.split(",")],
-    description: inputDescricao.value,
-    scheduled: inputData.value,
-    number_tickets: inputLotacao.value,
-  };
+    console.log(novoEvento);
+    const opcoes = {
+      method: "PUT",
+      body: JSON.stringify(novoEvento),
+      headers: {
+        "content-type": "application/json",
+      },
+      redirect: "follow",
+    };
 
-  console.log(novoEvento);
-  const opcoes = {
-    method: "PUT",
-    body: JSON.stringify(novoEvento),
-    headers: {
-      "content-type": "application/json",
-    },
-    redirect: "follow",
-  };
+    const resposta = await fetch(`${BASE_URL}/events/${nomeParam}`, opcoes);
+    const conteudoResposta = await resposta.json();
+    console.log(conteudoResposta);
 
-  const resposta = await fetch(`${BASE_URL}/events/${nomeParam}`, opcoes);
-  const conteudoResposta = await resposta.json();
-  console.log(conteudoResposta);
-
-  alert("Evento editado com sucesso");
-  window.location.replace("./admin.html");
+    if (resposta.status != 400) {
+      alert("Alteração realizada com sucesso");
+      window.location.replace("./admin.html");
+    }
+    if (resposta.status == 400) {
+      alert("Alteração negada. Preencha os campos corretamente.");
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };

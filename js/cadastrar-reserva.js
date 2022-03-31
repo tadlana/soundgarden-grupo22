@@ -8,29 +8,42 @@ const BASE_URL2 = "https://xp41-soundgarden-api.herokuapp.com";
 function click2() {
   const botaoReservar = document.querySelectorAll(".finalizar-reserva");
   botaoReservar.forEach((botao) => {
-    botao.addEventListener("mousedown", async (evento) => {
-      const novoEvento = {
-        owner_name: nomeInput.value,
-        owner_email: emailInput.value,
-        number_tickets: ingressosInput.value,
-        event_id: evento.target.getAttribute("event-id"),
-      };
-      console.log(novoEvento);
+    botao.addEventListener("click", async (evento) => {
+      evento.preventDefault();
+      try {
+        const novoEvento = {
+          owner_name: nomeInput.value,
+          owner_email: emailInput.value,
+          number_tickets: ingressosInput.value,
+          event_id: evento.target.getAttribute("event-id"),
+        };
 
-      const opcoes = {
-        method: "POST",
-        body: JSON.stringify(novoEvento),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        redirect: "follow",
-      };
+        const opcoes = {
+          method: "POST",
+          body: JSON.stringify(novoEvento),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          redirect: "follow",
+        };
 
-      const resposta = await fetch(`${BASE_URL2}/bookings`, opcoes);
-      const conteudoResposta = await resposta.json();
-      console.log(conteudoResposta);
+        const resposta = await fetch(`${BASE_URL2}/bookings`, opcoes);
+        const conteudoResposta = await resposta.json();
+        console.log(conteudoResposta);
 
-      alert("Ingresso reservado com sucesso");
+        if (resposta.status != 400) {
+          alert("Ingresso reservado com sucesso");
+          modalCadastrar.style.display = "none";
+          nomeInput.value = "";
+          emailInput.value = "";
+          ingressosInput.value = "";
+        }
+        if (resposta.status == 400) {
+          alert("Reserva negada. Preencha os campos corretamente.");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     });
   });
 }
