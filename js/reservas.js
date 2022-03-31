@@ -19,13 +19,7 @@ fetch(`${BASE_URL}/bookings/event/${nomeParam}`)
         <td>${evento.owner_email}</td>
         <td>${evento.number_tickets}</td>
         <td class ="botoes-admin">
-          <a href="reservas.html?_id=${
-            evento._id
-          }" class="btn btn-dark"> ver reservas</a>
-          <a href="editar-evento.html?_id=${
-            evento._id
-          }" class="btn btn-secondary" >editar</a>
-          <a href="excluir-evento.html?_id=${
+          <a href="excluir-reserva.html?_id=${
             evento._id
           }" class="btn btn-danger">excluir</a>
         </td>

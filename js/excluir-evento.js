@@ -8,7 +8,6 @@ const form = document.querySelector("form");
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const urlParams = new URLSearchParams(window.location.search);
 const nomeParam = urlParams.get("_id");
-const formExcluir = document.querySelector("form");
 
 const formatNumber = (numero) => {
   if (numero < 10) {
@@ -27,8 +26,6 @@ const resposta = async () => {
     newDate.getMinutes()
   )}`;
 
-  console.log(dataFormatada);
-
   inputNome.value = conteudoResposta.name;
   inputBanner.value = conteudoResposta.poster;
   inputAtracoes.value = conteudoResposta.attractions;
@@ -42,7 +39,7 @@ resposta().catch((error) => {
   alert("Não foi possível carregar dados da página.");
 });
 
-formExcluir.onsubmit = async (evento) => {
+form.onsubmit = async (evento) => {
   evento.preventDefault();
   try {
     const opcoes = {

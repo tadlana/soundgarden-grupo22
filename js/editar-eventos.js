@@ -8,7 +8,6 @@ const form = document.querySelector("form");
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const urlParams = new URLSearchParams(window.location.search);
 const nomeParam = urlParams.get("_id");
-const formExcluir = document.querySelector("form");
 
 const formatNumber = (numero) => {
   if (numero < 10) {
