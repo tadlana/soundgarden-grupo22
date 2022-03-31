@@ -1,9 +1,7 @@
 //lista de eventos admin.html
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const listaAdmin = document.querySelector(".table-body");
-const listaEventos = document.querySelector("#todos-eventos");
 let outputAdmin = "";
-let outputEventos = "";
 
 fetch(`${BASE_URL}/events`)
   .then((value) => {
