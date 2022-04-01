@@ -20,6 +20,9 @@
   #todos-eventos {
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    
   }
   .row {
     display: flex;
@@ -39,13 +42,16 @@
 }
 
 @media (max-width: 500px) {
-    #todos-eventos {
+    .container {
         display: flex;
-        flex-direction: column;
-      }
+        max-width: 200px !important;
+        align-items: center !important;
+        padding: 0 !important;
+            }
       .container {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           flex-wrap: wrap-reverse;
+          align-items: center;
       }
     }
