@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+#todos-eventos {
+    display: flex;
+    flex-direction: row;
+}
+
 @media (max-width: 900px) {
   body {
     width: 100%;
@@ -15,6 +20,10 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+    }
+    #todos-eventos {
+        display: flex;
+        flex-direction: row;
     }
 
     .row {
@@ -30,7 +39,7 @@
     header{ 
     width: 100%;
     }
-  }
+  
   .container {
     display: flex;
     flex-direction: column;

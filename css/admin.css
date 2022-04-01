@@ -8,6 +8,10 @@
     }
     
     @media (max-width: 900px) {
+        th {
+        display: none;
+
+        }
         body header p {
             display: flex;
             flex-direction: column;
@@ -61,6 +65,9 @@
       }
 
       @media (max-width: 500px) {
+        th {
+            display: none;
+        }
         #todos-eventos  {
             display: flex;
             flex-direction: row;
@@ -81,7 +88,7 @@
         overflow-x: scroll;
 
     }
-    aside {
-        display: none;
+   #lateral  {
+        display: none  !important;
     }
 }
