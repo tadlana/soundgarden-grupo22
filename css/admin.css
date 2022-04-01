@@ -8,10 +8,10 @@
     }
     
     @media (max-width: 900px) {
-        th {
-        display: none;
-
+        #lateral  {
+            display: none  !important;
         }
+
         body header p {
             display: flex;
             flex-direction: column;
