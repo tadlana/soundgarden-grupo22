@@ -129,3 +129,13 @@ small {
 .h2-modal {
   text-align: center;
 }
+@media (max-width: 900px) {
+  body {
+    width: 100%;
+  }
+
+  .DV-modal {
+    width: 300px;
+    padding: 0;
+  }
+}
