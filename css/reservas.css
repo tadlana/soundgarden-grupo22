@@ -1,0 +1,26 @@
+
+    @media (max-width: 1000px) {
+        #lateral  {
+            display: none  !important;
+        }
+        .formulario {
+            width: max(900px, 500px);
+        }
+        }
+
+      @media (max-width: 500px) {
+        
+       
+        #lateral  {
+        display: none  !important;
+        }
+        .btn-dark {
+        max-height: 38px;
+    }
+    .formulario {
+        width: 400px !important;
+    }
+
+
+}
+
