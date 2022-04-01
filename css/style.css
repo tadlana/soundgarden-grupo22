@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap%22");
 body {
   font-family: "Questrial", sans-serif;
 }
@@ -62,13 +62,14 @@ footer nav ul li {
 }
 
 .modal-content {
-  margin: 0 auto;
-  margin-top: 8%;
-  max-width: (39vw, 300px);
-  background-color: #f2f2f2;
-  box-shadow: 0 0 2px #fff;
-  padding: 60px 30px;
-}
+    margin: 0 auto;
+    margin-top: 8%;
+    background-color: #f2f2f2;
+    box-shadow: 0 0 0 2px #fff;
+    padding: 60px 30px;
+    max-width: max(39vw, 300px);
+  }
+
 
 .fechar-modal {
   position: absolute;
