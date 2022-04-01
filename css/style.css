@@ -131,12 +131,16 @@ small {
   text-align: center;
 }
 @media (max-width: 900px) {
-  body {
-    width: 100%;
+  
+  #div-footer {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
+#botao-adm {
+  width: 174.89px;
+}
 
-  .DV-modal {
-    width: 300px;
-    padding: 0;
-  }
+row {
+  width: 300px;
+}
 }
