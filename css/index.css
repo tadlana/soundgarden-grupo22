@@ -46,6 +46,31 @@
     align-items: center;
     text-align: center;
   }
+  #todos-eventos {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .col img {
+    width: 75%;
+  }
+
+  header {
+    width: 100%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
   .row {
     display: flex;
