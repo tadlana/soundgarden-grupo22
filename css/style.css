@@ -173,4 +173,12 @@ hr {
 .col-6 {
   width: 100% !important;
 }
+
+svg {
+  display: none;
+}
+
+#imagem-musica {
+  text-align: center;
+}
 }

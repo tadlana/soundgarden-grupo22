@@ -13,10 +13,7 @@
   body {
     width: 100%;
   }
-  .container {
 
-    text-align: center;
-  }
   #todos-eventos {
     display: flex;
     flex-direction: column;
@@ -30,7 +27,7 @@
     justify-content: center;
   }
   .col img {
-    width: 75%;
+    width: 100%;
   }
 
   header {
@@ -44,7 +41,6 @@
 @media (max-width: 500px) {
     .container {
         display: flex;
-        max-width: 200px !important;
         align-items: center !important;
         padding: 0 !important;
             }
