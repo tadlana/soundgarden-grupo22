@@ -49,22 +49,14 @@ const botaoDiv = document.querySelector("#div-finalizar-reserva");
 const form = document.querySelector("form");
 const ingressos = document.querySelector("#ingressos");
 const ingressosDisponiveis = document.querySelector("#ingressos-disponiveis");
+const nomeEvento = document.querySelector(".h4-modal");
 
 function click() {
   botaoAbrirModal = document.querySelectorAll("#botao-reservar");
   botaoAbrirModal.forEach((botao) => {
     botao.addEventListener("mousedown", (e) => {
       modalCadastrar.style.display = "block";
-      let output = `<label for="eventos">Evento</label>
-      <input
-        type="text"
-        id="eventos"
-        aria-describedby="eventos"
-        value= "${e.target.getAttribute("event-name")}"
-        disabled
-      />`;
-
-      eventosDiv.innerHTML = output;
+      nomeEvento.innerHTML = e.target.getAttribute("event-name");
       form.setAttribute("event-id", e.target.getAttribute("event-id"));
       ingressosDisponiveis.innerHTML = `Ingressos disponíveis: ${e.target.getAttribute(
         "event-tickets"

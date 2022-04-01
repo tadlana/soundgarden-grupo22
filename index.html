@@ -59,7 +59,7 @@
           id="todos-eventos"
           class="container d-flex justify-content-center align-items-center"
         >
-        <img src="img/loading-buffering.gif" id="loading" alt="" srcset=""/>
+        <img src="img/loading-buffering.gif" id="loading" alt="carregando"/>
       </div>
         <div class="container text-center">
           <a href="eventos.html" class="btn btn-secondary"
@@ -117,10 +117,10 @@
         <nav>
           <ul>
             <li>
-              <a href="eventos.html">eventos</a>
+              <a href="eventos.html" class="btn btn-secondary botoes-footer">eventos</a>
             </li>
             <li>
-              <a href="admin.html">painel administrativo</a>
+              <a href="admin.html" class="btn btn-secondary botoes-footer">painel administrativo</a>
             </li>
           </ul>
         </nav>
@@ -129,9 +129,9 @@
     <div id="dv-modal" class="modal-cadastrar">
       <div class="modal-content">
         <button class="fechar-modal">&times;</button>
-        <h3>RESERVE SEU INGRESSO</h3>
+        <h2 class="h2-modal">Reserve seu ingresso</h2>
+        <h4 class="h4-modal"></h4>
         <form class="form-modal">
-          <div class="form-linha">
             <div class="mb-3">
               <label for="nome">Nome Completo</label>
               <input type="text" id="nome" aria-describedby="nome" />
@@ -140,9 +140,6 @@
               <label for="email">Email</label>
               <input type="email" required id="email" aria-describedby="email" />
             </div>
-          </div>
-          <div class="form-linha">
-            <div class="mb-3" id="div-eventos"></div>
             <div class="mb-3">
               <label for="ingressos">Quantidade ingressos</label>
               <input
@@ -152,7 +149,6 @@
               />
               <small id="ingressos-disponiveis"></small>
             </div>
-          </div>
           <div class="div-finalizar-reserva" id="div-finalizar-reserva">
             <button class="finalizar-reserva" type="submit">
               finalizar reserva
