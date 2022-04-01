@@ -1,16 +1,10 @@
 .botoes-admin {
     width: 278px;
 }
-    @media (max-width: 1000px) {
-        #lateral  {
-            display: none  !important;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-    }
+
+#tabela-responsividade {
+    display: none;
+  }
 
       @media (max-width: 500px) {
         th {
@@ -26,10 +20,10 @@
 
         align-items: center;    
     }
-   #lateral  {
-        display: none  !important;
-    }
+
     .btn-dark {
         max-height: 38px;
     }
+
+
 }

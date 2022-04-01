@@ -130,6 +130,11 @@ small {
 .h2-modal {
   text-align: center;
 }
+
+#tabela-responsividade {
+  display: none;
+}
+
 @media (max-width: 900px) {
   
   #div-footer {
@@ -140,7 +145,32 @@ small {
   width: 174.89px;
 }
 
-row {
-  width: 300px;
+}
+
+@media (max-width: 500px) {
+  .row {
+    flex-direction: column;
+}
+
+span img {
+  width: 150px;
+}
+
+aside {
+   min-height: 10vh !important;
+}
+
+
+aside, main {
+   width: 100% !important;
+}
+hr {
+   display: none;
+}
+.p-5 {
+  padding: 0 3rem !important;
+}
+.col-6 {
+  width: 100% !important;
 }
 }
