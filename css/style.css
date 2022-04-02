@@ -181,4 +181,13 @@ svg {
 #imagem-musica {
   text-align: center;
 }
+#todos-eventos  {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100 px;
+
+}
 }

@@ -44,21 +44,19 @@
 .prev-btn,
 .next-btn {
   z-index: 999;
-  font-size: 3em;
-  color: #c2185b;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 5px;
+  font-size: 5em;
+  font-weight: bold;
+  color: #fff;
   cursor: pointer;
+  line-height: 0.5;
 }
 
 .prev-btn {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  padding-left: 0.70rem;
 }
 
 .next-btn {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  padding-right: 1.5rem;
 }
 
 .navigation-visibility {

@@ -27,7 +27,7 @@
     justify-content: center;
   }
   .col img {
-    width: 100%;
+    width: 75%;
   }
 
   header {
@@ -40,7 +40,6 @@
 
 @media (max-width: 500px) {
     .container {
-        display: flex;
         align-items: center !important;
         padding: 0 !important;
             }

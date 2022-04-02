@@ -59,15 +59,6 @@
       }
 
       @media (max-width: 500px) {
-        #todos-eventos  {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            width: 100 px;
-       
-        }
     footer .container {
         display: flex;
         flex-direction: column;
